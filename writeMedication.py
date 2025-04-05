@@ -10,7 +10,7 @@ def connect_to_mongodb(uri, db_name, collection_name):
     return collection
 
 # Función para guardar un recurso MedicationRequest en MongoDB
-def save_medication_request_to_mongodb(med_request_json, collection):
+def save_medicationRequest_to_mongodb(med_request_json, collection):
     try:
         # Convertir el JSON string a un diccionario de Python
         med_data = json.loads(med_request_json)
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     uri = "mongodb+srv://21vanessaaa:VANEifmer2025@sampleinformationservic.ceivw.mongodb.net/?retryWrites=true&w=majority&appName=SampleInformationService"
     # Nombre de la base de datos y la colección
     db_name = "EntregaDeMedicamentos"
-    collection_name = "MedicationRequest" 
+    collection_name = "medicationRequest" 
 
     # Conectar a MongoDB
     collection = connect_to_mongodb(uri, db_name, collection_name)
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     # JSON de ejemplo para MedicationRequest
     med_request_json = '''
     {
-      "resourceType": "MedicationRequest",
+      "resourceType": "medicationRequest",
       "id": "medrx001",
       "status": "active",
       "intent": "order",
@@ -76,10 +76,10 @@ if __name__ == "__main__":
     '''
 
     # Guardar el recurso MedicationRequest en MongoDB
-    inserted_id = save_medication_request_to_mongodb(med_request_json, collection)
+    inserted_id = save_medicationRequest_to_mongodb(med_request_json, collection)
 
     if inserted_id:
-        print(f"Entrega de medicamento guardada con ID: {inserted_id}")
+        print(f"Solicitud de medicamento guardada con ID: {inserted_id}")
     else:
-        print("No se pudo guardar la entrega de medicamento.")
+        print("No se pudo guardar la solicitud del medicamento.")
         
