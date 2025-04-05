@@ -1,12 +1,12 @@
-from fhir.resources.medicationrequest import MedicationRequest
+from fhir.resources.medicationRequest import medicationRequest
 import json
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    # JSON string correspondiente al artefacto MedicationRequest de HL7 FHIR
+    # JSON string correspondiente al artefacto medicationRequest de HL7 FHIR
     medication_request_json = '''
     {
-      "resourceType": "MedicationRequest",
+      "resourceType": "medicationRequest",
       "id": "medrx001",
       "status": "active",
       "intent": "order",
@@ -43,8 +43,8 @@ if __name__ == "__main__":
     }
     '''
 
-    # Validar y parsear el JSON como un recurso MedicationRequest
-    med_request = MedicationRequest.model_validate(json.loads(medication_request_json))
+    # Validar y parsear el JSON como un recurso medicationRequest
+    med_request = medicationRequest.model_validate(json.loads(medication_request_json))
 
     # Mostrar el resultado como diccionario Python
     print("Entrega de Medicamento (JSON validado)::")
