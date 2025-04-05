@@ -9,16 +9,16 @@ def connect_to_mongodb(uri, db_name, collection_name):
     collection = db[collection_name]
     return collection
 
-def read_medication_requests_from_mongodb(collection):
+def read_medicationRequest_from_mongodb(collection):
     """Leer todas las órdenes de medicación de la colección"""
     try:
-        medication_requests = collection.find()
-        return list(medication_requests)
+        medicationRequest = collection.find()
+        return list(medicationRequest)
     except Exception as e:
         print(f"Error al leer desde MongoDB: {e}")
         return None
 
-def display_medication_requests(medication_list):
+def display_medicationRequest(medication_list):
     """Mostrar los datos de las órdenes de medicación"""
     if medication_list:
         for med in medication_list:
@@ -38,13 +38,13 @@ if __name__ == "__main__":
     # Configuración de conexión
     uri = "mongodb+srv://21vanessaaa:VANEifmer2025@sampleinformationservic.ceivw.mongodb.net/?retryWrites=true&w=majority&appName=SampleInformationService"
     db_name = "EntregaDeMedicamentos"
-    collection_name = "MedicationRequest"
+    collection_name = "medicationRequest"
 
     # Conectar a MongoDB
     collection = connect_to_mongodb(uri, db_name, collection_name)
     
     # Leer las órdenes de medicación de la colección
-    medication_requests = read_medication_requests_from_mongodb(collection)
+    medicationRequest = read_medicationRequest_from_mongodb(collection)
     
     # Mostrar los datos de las órdenes de medicación
-    display_medication_requests(medication_requests)
+    display_medicationRequest(medicationRequest)
