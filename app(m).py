@@ -17,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-@app.get("/medication-request/{request_id}", response_model=dict)
+@app.get("/medicationRequest/{request_id}", response_model=dict)
 async def get_request_by_id(request_id: str):
     status, request = GetMedicationRequestById(request_id)
     if status == 'success':
@@ -27,7 +27,7 @@ async def get_request_by_id(request_id: str):
     else:
         raise HTTPException(status_code=500, detail=f"Internal error. {status}")
 
-@app.get("/medication-request", response_model=dict)
+@app.get("/medicationRequest", response_model=dict)
 async def get_request_by_identifier(system: str, value:str):
     status, request =GetMedicationRequestByIdentifier(system, value)
     if status == 'success':
@@ -37,7 +37,7 @@ async def get_request_by_identifier(system: str, value:str):
     else: 
         raise HTTPException(status_code=500, detail=f"Internal error. {status}")
 
-@app.post("/medication-request", response_model=dict)
+@app.post("/medicationRequest", response_model=dict)
 async def add_request(request: Request):
     new_request_dict = dict(await request.json())
     status, request_id = WriteMedicationRequest(new_request_dict)
