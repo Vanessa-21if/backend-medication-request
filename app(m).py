@@ -1,13 +1,13 @@
 from fastapi import FastAPI, HTTPException, Request
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 from app.controlador.MedicationCrud import (
     GetMedicationRequestById,
     WriteMedicationRequest,
     GetMedicationRequestByIdentifier,
 )
-from fastapi.middleware.cors import CORSMiddleware
 
-from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
